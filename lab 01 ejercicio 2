@@ -1,0 +1,8 @@
+Definir nombre, edad como cadena
+Escribir "introduce tu nombre"
+leer nombre
+Escribir "introduce tu edad"
+leer edad
+Escribir "Tu nombre es "
+* nombre
+Escribir "tu edad es ", edad
