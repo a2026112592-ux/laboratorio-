@@ -1,0 +1,10 @@
+Definir base Como Real
+	Definir altura Como Real
+	Definir area Como Real
+	Escribir "ingresa la base del area deseada"
+	Leer base
+	Escribir "ingresa la altura del area deseada"
+	Leer altura
+	area=base*altura
+	mostrar " el area del rectangulo: es " area total
+	
