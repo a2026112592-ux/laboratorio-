@@ -1,0 +1,40 @@
+string nombreCliente;
+    double consumo;
+    const double MONTO_FIJO = 10.0;
+    double tarifaPorM3 = 0.0;
+    string categoria = "";
+
+    cout << "Ingrese el nombre del cliente: ";
+    getline(cin, nombreCliente);
+
+    cout << "Ingrese el consumo en m3: ";
+    cin >> consumo;
+
+    if (consumo > 0 && consumo <= 15) {
+        tarifaPorM3 = 1.20;
+        categoria = "Consumo Minimo";
+    } else if (consumo > 15 && consumo <= 35) {
+        tarifaPorM3 = 2.50;
+        categoria = "Consumo Domestico";
+    } else if (consumo > 35 && consumo <= 70) {
+        tarifaPorM3 = 4.00;
+        categoria = "Consumo Comercial";
+    } else if (consumo > 70) {
+        tarifaPorM3 = 6.50;
+        categoria = "Consumo Alto / Industrial";
+    } else {
+        cout << "Error: El consumo debe ser mayor a 0 m3." << endl;
+        return 1;
+    }
+
+    double pagoConsumo = consumo * tarifaPorM3;
+    double pagoTotal = pagoConsumo + MONTO_FIJO;
+
+    cout << fixed << setprecision(2);
+    cout << "\nCliente: " << nombreCliente << endl;
+    cout << "Categoria: " << categoria << endl;
+    cout << "Monto fijo: Bs " << MONTO_FIJO << endl;
+    cout << "Pago total: Bs " << pagoTotal << endl;
+
+    return 0;
+}
