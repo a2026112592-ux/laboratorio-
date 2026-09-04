@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string nombreCliente;
+    double montoCompra;
+
+    // Entrada de datos
+    cout << "Ingrese el nombre del cliente: ";
+    getline(cin, nombreCliente);
+
+    cout << "Ingrese el monto total de la compra (Bs): ";
+    cin >> montoCompra;
+
+    string categoria;
+    double porcentajeDescuento = 0.0;
+
+    // Determinar categoría y porcentaje según el monto
+    if (montoCompra <= 100) {
+        categoria = "Sin descuento (0%)";
+        porcentajeDescuento = 0.0;
+    } else if (montoCompra <= 500) {
+        categoria = "Descuento Bronce (5%)";
+        porcentajeDescuento = 0.05;
+    } else if (montoCompra <= 1000) {
+        categoria = "Descuento Plata (10%)";
+        porcentajeDescuento = 0.10;
+    } else {
+        categoria = "Descuento Oro (15%)";
+        porcentajeDescuento = 0.15;
+    }
+
+    // Cálculos
+    double descuentoAplicado = montoCompra * porcentajeDescuento;
+    double totalAPagar = montoCompra - descuentoAplicado;
+
+    // Salida de resultados
+    cout << "\n--- RESUMEN DE VENTA ---\n";
+    cout << "Nombre Cliente: " << nombreCliente << "\n";
+    cout << "Categoría: " << categoria << "\n";
+    cout << "Subtotal: Bs " << montoCompra << "\n";
+    cout << "Descuento aplicado: Bs " << descuentoAplicado << "\n";
+    cout << "Total a pagar: Bs " << totalAPagar << "\n";
+
+    return 0;
+}
