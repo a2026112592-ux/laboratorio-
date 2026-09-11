@@ -1,0 +1,71 @@
+#include <iostream>
+#include <cctype> 
+
+using namespace std;
+
+int main() {
+    char opcion;
+    double peso, costoTotal, tarifaBase, precioKgExtra;
+
+    do {
+       
+        cout << "\n==========================================\n";
+        cout << "       SISTEMA DE CALCULO DE ENVIOS       \n";
+        cout << "==========================================\n";
+        cout << "[L] La Paz / El Alto\n";
+        cout << "[C] Cochabamba\n";
+        cout << "[S] Santa Cruz\n";
+        cout << "[X] Salir del sistema\n";
+        cout << "Seleccione una opcion: ";
+        cin >> opcion;
+
+        
+        opcion = toupper(opcion);
+
+     
+        switch (opcion) {
+            case 'L':
+                tarifaBase = 7.00;
+                precioKgExtra = 3.00;
+                break;
+            case 'C':
+                tarifaBase = 5.00;
+                precioKgExtra = 2.00;
+                break;
+            case 'S':
+                tarifaBase = 8.00;
+                precioKgExtra = 4.00;
+                break;
+            case 'X':
+                cout << "\nSaliendo del sistema\n";
+                continue; 
+            default:
+                cout << "\nOpción no válida. Intente nuevamente.\n";
+                continue; 
+        }
+
+        
+        cout << "Ingrese el peso del paquete en Kg: ";
+        cin >> peso;
+
+        if (peso <= 0) {
+            cout << "El peso debe ser mayor a 0 Kg.\n";
+        } else {
+            
+            if (peso > 2) {
+                double pesoExtra = peso - 2;
+                costoTotal = tarifaBase + (pesoExtra * precioKgExtra);
+            } else {
+                costoTotal = tarifaBase; 
+                
+            }
+
+            
+            cout << "\n--- RESUMEN DEL ENVIO ---\n";
+            cout << "Costo total a pagar: Bs " << costoTotal << "\n";
+        }
+
+    } while (opcion != 'X');
+
+    return 0;
+}
