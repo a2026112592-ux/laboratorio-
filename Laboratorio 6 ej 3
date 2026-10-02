@@ -1,0 +1,44 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    long long N;
+
+    // Validación de entrada
+    do {
+        cout << "Ingrese un numero entero positivo N: ";
+        cin >> N;
+        if (N <= 0) {
+            cout << "El numero debe ser un entero positivo. Intente nuevamente.\n";
+        }
+    } while (N <= 0);
+
+    long long aux = N; // Copia para procesar los dígitos
+    int totalDigitos = 0;
+    int digitosMayoresA5 = 0;
+    int sumaMayoresA5 = 0;
+
+    // Procesamiento del número dígito por dígito
+    while (aux > 0) {
+        int digito = aux % 10; // Extraer el último dígito
+        
+        totalDigitos++; // Contar el dígito procesado
+
+        if (digito > 5) {
+            digitosMayoresA5++;
+            sumaMayoresA5 += digito;
+        }
+
+        aux /= 10; // Eliminar el último dígito
+    }
+
+    // Resultados
+    cout << "\n--- Resultados del Analisis ---" << endl;
+    cout << "Numero analizado: " << N << endl;
+    cout << "Cantidad total de digitos: " << totalDigitos << endl;
+    cout << "Cantidad de digitos mayores a 5: " << digitosMayoresA5 << endl;
+    cout << "Suma de los digitos mayores a 5: " << sumaMayoresA5 << endl;
+
+    return 0;
+}
