@@ -1,0 +1,40 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    double combustibleRestante = 50.0;
+    double combustibleConsumidoTotal = 0.0;
+    double consumoEntrega = 0.0;
+    int cantidadEntregas = 0;
+
+    cout << "--- Control de Combustible de Vehiculo ---" << endl;
+    cout << "Combustible inicial: " << combustibleRestante << " litros." << endl;
+
+    // Se registran entregas mientras queden mas de 10 litros de combustible
+    while (combustibleRestante > 10.0) {
+        cout << "\nCombustible actual: " << combustibleRestante << " litros." << endl;
+        cout << "Ingrese la cantidad de litros consumidos en la entrega: ";
+        cin >> consumoEntrega;
+
+        if (consumoEntrega < 0) {
+            cout << "Cantidad invalida. Ingrese un valor positivo." << endl;
+            continue;
+        }
+
+        combustibleRestante -= consumoEntrega;
+        combustibleConsumidoTotal += consumoEntrega;
+        cantidadEntregas++;
+    }
+
+    // Resultados al finalizar la jornada/registro
+    cout << "\n========================================" << endl;
+    cout << "REGISTRO DETENIDO" << endl;
+    cout << "========================================" << endl;
+    cout << "Cantidad de entregas realizadas: " << cantidadEntregas << endl;
+    cout << "Total de combustible consumido: " << combustibleConsumidoTotal << " litros" << endl;
+    cout << "Combustible restante: " << combustibleRestante << " litros" << endl;
+    cout << "Mensaje: Debe cargar combustible" << endl;
+
+    return 0;
+}
