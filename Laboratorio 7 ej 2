@@ -1,0 +1,55 @@
+#include <iostream>
+
+using namespace std;
+
+// Función para solicitar un número entero positivo
+void leerNumero(int &n) {
+    do {
+        cout << "Ingrese un numero entero positivo: ";
+        cin >> n;
+    } while (n <= 0);
+}
+
+// Función para calcular el dígito mayor, menor y la suma de pares
+void procesarDigitos(int n, int &mayor, int &menor, int &sumaPares) {
+    mayor = -1;
+    menor = 10;
+    sumaPares = 0;
+
+    int temp = n;
+    while (temp > 0) {
+        int digito = temp % 10; // Extrae el último dígito
+        
+        if (digito > mayor) {
+            mayor = digito;
+        }
+        if (digito < menor) {
+            menor = digito;
+        }
+        if (digito % 2 == 0) {
+            sumaPares += digito;
+        }
+
+        temp /= 10; // Elimina el último dígito
+    }
+}
+
+// Función para mostrar los resultados obtenidos
+void mostrarResultados(int mayor, int menor, int sumaPares) {
+    cout << "\n--- RESULTADOS ---" << endl;
+    cout << "Digito mayor: " << mayor << endl;
+    cout << "Digito menor: " << menor << endl;
+    cout << "Suma de digitos pares: " << sumaPares << endl;
+}
+
+int main() {
+    int numero;
+    int mayor, menor, sumaPares;
+
+    // Coordinación mediante main
+    leerNumero(numero);
+    procesarDigitos(numero, mayor, menor, sumaPares);
+    mostrarResultados(mayor, menor, sumaPares);
+
+    return 0;
+}
