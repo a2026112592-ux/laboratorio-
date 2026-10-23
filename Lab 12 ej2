@@ -1,0 +1,65 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+// Prototipos de funciones
+void leerCoeficientes(double &a, double &b, double &c);
+double calcularDiscriminante(double a, double b, double c);
+void calcularRaices(double a, double b, double discriminante, double &x1, double &x2);
+void mostrarResultado(double a, double discriminante, double x1, double x2);
+
+int main() {
+    double a = 0.0, b = 0.0, c = 0.0;
+    double discriminante = 0.0;
+    double x1 = 0.0, x2 = 0.0;
+
+    leerCoeficientes(a, b, c);
+    
+    discriminante = calcularDiscriminante(a, b, c);
+
+    if (a != 0 && discriminante >= 0) {
+        calcularRaices(a, b, discriminante, x1, x2);
+    }
+
+    mostrarResultado(a, discriminante, x1, x2);
+
+    return 0;
+}
+
+// Función para leer los coeficientes
+void leerCoeficientes(double &a, double &b, double &c) {
+    cout << "Ingrese el coeficiente a: ";
+    cin >> a;
+    cout << "Ingrese el coeficiente b: ";
+    cin >> b;
+    cout << "Ingrese el coeficiente c: ";
+    cin >> c;
+}
+
+// Función para calcular el discriminante
+double calcularDiscriminante(double a, double b, double c) {
+    return (b * b) - (4 * a * c);
+}
+
+// Función para calcular las raíces (solo se llama si a != 0 y discriminante >= 0)
+void calcularRaices(double a, double b, double discriminante, double &x1, double &x2) {
+    x1 = (-b + sqrt(discriminante)) / (2 * a);
+    x2 = (-b - sqrt(discriminante)) / (2 * a);
+}
+
+// Función para mostrar el resultado final según el análisis del problema
+void mostrarResultado(double a, double discriminante, double x1, double x2) {
+    if (a == 0) {
+        cout << "La ecuacion no es cuadratica (a = 0)." << endl;
+    } else if (discriminante > 0) {
+        cout << "Dos soluciones reales distintas:" << endl;
+        cout << "x1 = " << x1 << endl;
+        cout << "x2 = " << x2 << endl;
+    } else if (discriminante == 0) {
+        cout << "Una solucion real doble:" << endl;
+        cout << "x1 = x2 = " << x1 << endl;
+    } else {
+        cout << "No existen soluciones reales (discriminante < 0)." << endl;
+    }
+}
