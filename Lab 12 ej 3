@@ -1,0 +1,40 @@
+#include <iostream>
+
+using namespace std;
+
+// Prototipos de funciones
+void leerNumero(int &N);
+void mostrarDigitos(int u, int d, int c, int m);
+
+int main() {
+    int N = 0;
+    int u = 0, d = 0, c = 0, m = 0;
+
+    leerNumero(N);
+
+    // Descomposición realizada directamente mediante operaciones matemáticas
+    m = N / 1000;         // Unidades de mil
+    c = (N / 100) % 10;   // Centenas
+    d = (N / 10) % 10;    // Decenas
+    u = N % 10;           // Unidades
+
+    mostrarDigitos(u, d, c, m);
+
+    return 0;
+}
+
+// Función para leer y validar que el número esté en el rango 1 <= N < 10000
+void leerNumero(int &N) {
+    do {
+        cout << "Ingrese un numero entero positivo (1 <= N < 10000): ";
+        cin >> N;
+        if (N < 1 || N >= 10000) {
+            cout << "Numero invalido. Debe estar entre 1 y 9999.\n";
+        }
+    } while (N < 1 || N >= 10000);
+}
+
+// Función para imprimir las cifras por separado
+void mostrarDigitos(int u, int d, int c, int m) {
+    cout << "m = " << m << ", c = " << c << ", d = " << d << ", u = " << u << endl;
+}
