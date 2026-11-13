@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+void RegistrarTextos(string &textoPrincipal, string &subcadena) {
+    cout << "--- REGISTRO DE TEXTOS ---" << endl;
+    cout << "1. Ingrese el texto principal (ej. hooola): ";
+    getline(cin, textoPrincipal);
+    
+    cout << "2. Ingrese la subcadena a buscar (ej. oool): ";
+    getline(cin, subcadena);
+}
+
+
+int BuscarSubCadena(string a, string b) {
+    size_t pos = b.find(a);
+    if (pos == string::npos) {
+        return -1;
+    }
+    return pos;
+}
+
+
+void MostrarResultado(string textoPrincipal, string subcadena, int posicion) {
+    cout << "\nTexto Principal : \"" << textoPrincipal << "\"" << endl;
+    cout << "Subcadena       : \"" << subcadena << "\"" << endl;
+    
+    if (posicion != -1) {
+        cout << "Estado   : ENCONTRADO" << endl;
+        cout << "Posicion : Indice [" << posicion << "]" << endl;
+    } else {
+        cout << "Estado   : NO ENCONTRADO" << endl;
+        cout << "Posicion : " << posicion << endl;
+    }
+}
+
+int main() {
+    string textoPrincipal, subcadena;
+    
+    
+    RegistrarTextos(textoPrincipal, subcadena);
+    int resultado = BuscarSubCadena(subcadena, textoPrincipal);
+    MostrarResultado(textoPrincipal, subcadena, resultado);
+    
+    return 0;
+}
